@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>iTools</title>
+
+    <script src="vendor/jquery-1.11.1.js"></script>
+    <link rel="stylesheet" href="vendor/animate.css">
+    <script src="iTools.js"></script>
+    <link rel="stylesheet" href="iTools.css">
+    <style type="text/css">
+        .box,.box-table {
+            border: solid 1px #888;
+            width: 300px;
+            padding: 20px;
+            margin: 0 auto;
+            float: left;
+        }
+        .item {
+            background-color: #D5D5D5;
+            height: 100px;
+            width: 100%;
+            margin: 5px auto;
+            text-align: center;
+            line-height: 100px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box"></div>
+
+<script type="text/javascript">
+!function(){
+    var item = function(n){
+        return '\
+            <p class="item">'+n.text+'</p>\
+        ';
+    }
+
+    var loader = iTools.loader({
+        container: '.box',
+        formater: item,
+        url: './server.php',
+        dataRows: 10,
+        itemComplete: function(){},
+        allComplete: function(){},
+    });
+    
+    loader.load();
+}();
+</script>
+
+<table class="box-table">
+    <thead>
+        <tr>
+            <th width="60%">column1</th>
+            <th width="20%">column2</th>
+            <th width="20%">column3</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<script type="text/javascript">
+!function(){
+    var item = function(n){
+        return '\
+            <tr>\
+                <td>'+n.text+'</td>\
+                <td>Hello</td>\
+                <td>Demo</td>\
+            </tr>\
+        ';
+    }
+
+    var loader = iTools.loader({
+        container: '.box-table tbody',
+        formater: item,
+        url: './server.php',
+        dataRows: 10,
+        itemComplete: function(){},
+        allComplete: function(){},
+    });
+    
+    loader.load();
+}();
+</script>
+</body>
+</html>
